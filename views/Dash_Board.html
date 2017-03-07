@@ -1,0 +1,219 @@
+<html>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+  crossorigin="anonymous"></script>
+    
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    
+    
+<script src="http://canvasjs.com/assets/script/canvasjs.min.js"></script> 
+    
+    
+   
+<title>Annotation Software For Synthetic Biologist</title>
+<body>
+    
+<nav class="navbar navbar-inverse bg-primary">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index">Annotation Software</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">Annotated Data</a></li>
+      <!--   <li class="dropdown">
+         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li> -->
+      </ul>
+    <!--  <form class="navbar-form navbar-left">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>-->
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/folder.html">Database Folder</a></li>
+       <!-- <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li> -->
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+    
+    
+   	<div>
+		<div class="col-md-4">
+			<div class="panel panel-default">
+			  <div class="panel-heading"> <i class="fa fa-bell fa-fw"></i> Date To Be Annotated </div>
+			  <!-- /.panel-heading -->
+                
+			  <div class="panel-body">
+				<div id= "Date_Selection" class="list-group"> 
+                    <!--
+					<a href="#" class="list-group-item">  20160615  </a> 
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
+                          <span >70% Complete</span>
+                        </div>
+                    </div>
+					<a href="#" class="list-group-item">  20160721 </a> 
+					   <div class="progress">
+                      <div class="progress-bar" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width:30%">
+                            <span>30% Complete</span>
+				    </div>
+                    </div>
+                    -->
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+    
+    
+   <div class="col-md-3">
+    <div  class="panel panel-default" id="Hide_Panel" >
+        <div class="panel-heading" id="Heading_Panel" style="background: default">
+            Items Name - Date
+        </div>
+  
+        <div  class="list-group" id="Samples_List">
+           
+            
+           
+        
+        </div>
+        </div>
+    </div>
+    
+    </body>
+    <script>
+        var x=[];
+   function GetRequestSync(URLH){
+            
+        var jhr= new XMLHttpRequest();
+        
+        jhr.onreadystatechange = function() {
+    if (jhr.readyState === XMLHttpRequest.DONE) {
+        
+         x=jQuery.parseJSON(jhr.responseText);
+    
+        }
+        };
+        
+            jhr.open("GET",URLH,false);
+          jhr.send()
+             /* default to null */
+           return x;
+           
+       };
+        function getCookie(name) {
+  var regexp = new RegExp("(?:^" + name + "|;\s*"+ name + ")=(.*?)(?:;|$)", "g");
+  var result = regexp.exec(document.cookie);
+  return (result === null) ? null : result[1];
+}
+
+        
+    $(document).ready(function(){
+         var i=0;
+            var Sample_Items_Unique=[];
+            var Sample_Items=[];
+        var Sample_Init = GetRequestSync("/DashBoardInit");
+        
+        console.log(Sample_Init);
+        console.log(Sample_Items);
+        
+        for (var k=0;k<Sample_Init.length;k++){
+            
+            
+         $("#Date_Selection").append('<a href="#" class="list-group-item">' + Sample_Init[k] + '</a><div class="progress"><div class="progress-bar" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width:30%"><span >30% Complete</span></div></div>')
+         
+        }
+        
+        
+        
+        
+        $("#Hide_Panel").hide();
+    
+        $('#Date_Selection a').click(function(){
+            
+        var Sample_Items = GetRequestSync("/DashBoard/"+$(this).html());
+            console.log(Sample_Items);
+            i=0;
+            for (var key in Sample_Items){
+           
+            Sample_Items_Unique[i]=Sample_Items[key];
+            i++;   
+        }
+            console.log(Sample_Items_Unique);
+            
+            
+            Sample_Items_Unique= Sample_Items_Unique.filter(function(elem, index, self) {
+    return index == self.indexOf(elem);
+});
+              Sample_Items_Unique=  Sample_Items_Unique.sort();
+            
+            
+            $("#Hide_Panel").hide();
+            $("#Samples_List").children().remove();
+              $('#Hide_Panel').fadeToggle();
+            
+         $("#Heading_Panel").text("Items Name :" + ($(this).html()));
+            
+        for(var i=0; i< Sample_Items_Unique.length;i++){
+           
+            $("#Samples_List").append('<a href="#" id="Samples_Selection" class="list-group-item">' + Sample_Items_Unique[i] + '<span class="glyphicon glyphicon-ok-circle pull-right"></span></a>').hide().show('normal');
+        }
+              
+        });
+        
+        });
+        
+        $(document).on('click',"#Samples_Selection",function(){
+            
+            
+            
+            
+            
+        }
+     
+        
+    
+    </script>
+    
+    
+    
+    
+</html>

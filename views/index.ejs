@@ -1,0 +1,437 @@
+<html>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+  crossorigin="anonymous"></script>
+    
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    
+    
+<script src="http://canvasjs.com/assets/script/canvasjs.min.js"></script> 
+
+
+    
+    <script>
+        
+    $(document).ready(function(){
+        
+        
+    $("DayButton").click(function(){
+    $(this).addClass("active").siblings().removeClass("active");
+    });
+        
+        
+    $(".dropdown-menu li a").click(function(){
+    $(this).parents(".col-md-2").find('button').html($(this).text() + ' <span class="caret"></span>');  
+    /*$(this).parents(".col-md-2").find('button').val($(this).data('value'));*/
+        var x= $(this).data('value');
+        alert(x);
+
+
+          });    
+        
+    $("#SubmitComment").click(function(){
+    var test= $('#InputForm').val();
+        
+    var category= $(".dropdown-menu li a").data('value');
+    alert(test);
+    console.log(category);
+        alert(category);
+        console.log(category2);
+    $('#InputForm').val("");
+                 
+                    });
+              
+              
+});   
+        
+    </script>
+    
+   
+<title>Annotation Software For Synthetic Biologist</title>
+<body>
+    
+<nav class="navbar navbar-inverse bg-primary">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index">Annotation Software</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">Annotated Data</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form class="navbar-form navbar-left">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/folder.html">Database Folder</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+    
+    
+
+
+
+    <h2><%=SampleName%></h2>
+    
+    
+	           <div class="toolbar">
+                      
+                        <a href="index2.html" class="btn btn-primary btn">Absorbance</a>
+				        
+                   
+                    <a href="#" id="DayButton" class="btn btn-primary btn">Day 1</a>
+                        <a href="#" id="DayButton" class="btn btn-primary btn">Day 2</a>
+                        <a href="#" id="DayButton" class="btn btn-primary btn">Day 3</a>
+                </div>
+    
+                   <div class="col-md-6" style="height:900px">
+                            <div id="sample-graph"></div>  
+                   </div>
+    
+    
+    <div class="col-md-6">
+     <div id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-primary">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
+        <a role="button" data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Options Bar
+        </a>
+      </h4>
+    </div>
+      <div id="collapseOne" class="accordion-body collapse">
+          
+                        <form>
+                            <ul>
+                <label class="checkbox">
+                            
+                            <li style="list-style: none">
+                    
+                    <input type="checkbox" name="CheckBox1" style="font-size:14px;"> Overlaying With Reference
+                   </li>
+                                <li style= "list-style: none">
+                                    <input type="checkbox" name="CheckBox2"> Show Comparison Deviation
+                                    </li>
+                      <li style= "list-style: none">
+                                    <input type="checkbox" name="CheckBox3"> Compare to Distribution
+                                    </li>
+                            </label>
+                                </ul>
+                </form>
+                
+      </div>
+      
+  </div>
+         
+        </div>
+    </div>
+
+    <div class="col-md-2">
+        
+       <div class="panel panel-primary">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
+          Reference
+      </h4>
+    </div>
+          <div class="panel-body">
+              <a href="/jsonapplication">
+               <img src="ThumbNail1.png" class="img-thumbnail" alt="Reference">
+              </a> 
+                </div>
+  </div>
+        </div>
+     <div class="col-md-2">
+     <div class="panel panel-primary">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
+          Negative
+      </h4>
+    </div>
+          <div class="panel-body">
+              <a href="#">
+               <img src="ThumbNail1.png" class="img-thumbnail" alt="Negative">
+              </a>
+                </div>
+  </div>
+         </div>
+    <div class="col-md-2">
+          <div class="panel panel-primary">
+    <div class="panel-heading" role="tab">
+      <h4 class="panel-title">
+          Control
+      </h4>
+    </div>
+          <div class="panel-body">
+              <a href="#">
+               <img src="ThumbNail1.png" class="img-thumbnail" alt="Control">
+              </a>
+                </div>
+  </div>
+    </div>
+    
+  
+    
+    
+    
+    <div class="col-md-6">
+
+   <div class="col-md-2">
+  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
+          style="border-radius:6px;padding:8px 11px;font-size:15; text-align:left; width:76px" id="ActionButton">
+    Action
+    <span class="caret"></span>
+  </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <li><a href="#" data-value="Accept">Accept</a></li>
+    <li><a href="#" data-value="Reject">Reject</a></li>
+    <li><a href="#" data-value="Maybe">Maybe</a></li>
+  </ul>
+  
+    </div>
+       
+   <div class="input-group">
+
+    <input type="text" class="form-control " placeholder="Comments" id="InputForm">
+    <div class="input-group-btn">
+      <button style="height:35px" class="btn btn-default" type="submit" id="SubmitComment">
+          <label>Submit</label>
+          <i class="glyphicon glyphicon-edit"></i>
+      </button>
+
+            </div>
+</div>
+      
+        </div>
+
+    
+    
+    
+</body>  
+  
+<script type="text/javascript">
+window.onload = function () {
+	var chart = new CanvasJS.Chart("sample-graph",
+	{
+       /* height : 900,
+        width: 1100,*/
+       /* title: {
+			text: "Absorbance",
+            horizontalAlign: "left",
+            fontSize: 30,
+            borderColor: "red",
+            borderThickness: 1,
+            padding:5,
+            margin:15,
+*/
+		
+        
+		axisX: {
+			interval: 30,
+            title: "Time(Min)",
+            titleFontSize: 14,
+            labelFontSize: 14,
+		},
+        axisY:
+        {
+            tile: "Arbitary Unit",
+          interval: 0.05,  
+            labelFontSize:14,
+            
+        },
+        legend:
+        {
+            horizontalAlign: "right",
+        },
+		data: [
+		{
+			type: "spline",
+			color: "#B36491",
+            showInLegend: true,
+            name: "A1",
+            markerType: "none",
+			dataPoints: [
+                 { x:0 , y: 0 },
+            { x:15 , y: 0.04 },
+            { x:30 , y: 0.043 },
+            { x:45 , y: 0.044 },
+            { x:60 , y: 0.046 },
+            { x:75 , y: 0.048 },
+            { x:90 , y: 0.051 },
+            { x:105 , y: 0.054 },
+            { x:120 , y: 0.059 },
+            { x:135 , y: 0.065 },
+            { x:150 , y: 0.072 },
+            { x:165 , y: 0.081 },
+            { x:180 , y: 0.092 },
+            { x:195 , y: 0.105 },
+            { x:210 , y: 0.124 },
+            { x:225 , y: 0.143 },
+            { x:240 , y: 0.166 },
+            { x:255 , y: 0.188 },
+            { x:270 , y: 0.226 },
+            { x:285 , y: 0.272 },
+            { x:300 , y: 0.309 },
+            { x:315 , y: 0.326 },
+            { x:330 , y: 0.371 },
+            { x:345 , y: 0.421 },
+            { x:360 , y: 0.462 }
+
+	]
+		},
+        
+        {
+            type: "spline",
+			color: "#00FF00",
+            showInLegend: true,
+            name: "A2",
+            markerType: "none",
+            dataPoints:[
+                { x:0 , y: 0 },
+            { x:15 , y: 0.04 },
+            { x:30 , y: 0.043 },
+            { x:45 , y: 0.045 },
+            { x:60 , y: 0.046 },
+            { x:75 , y: 0.049 },
+            { x:90 , y: 0.051 },
+            { x:105 , y: 0.055 },
+            { x:120 , y: 0.06 },
+            { x:135 , y: 0.066 },
+            { x:150 , y: 0.074 },
+            { x:165 , y: 0.085 },
+            { x:180 , y: 0.096 },
+            { x:195 , y: 0.111 },
+            { x:210 , y: 0.13 },
+            { x:225 , y: 0.154 },
+            { x:240 , y: 0.173 },
+            { x:255 , y: 0.205 },
+            { x:270 , y: 0.248 },
+            { x:285 , y: 0.295 },
+            { x:300 , y: 0.332 },
+            { x:315 , y: 0.358 },
+            { x:330 , y: 0.406 },
+            { x:345 , y: 0.458 },
+            { x:360 , y: 0.495 }
+            ]
+        },
+            {
+             type: "spline",
+			color: "#0000FF",
+            showInLegend: true,
+            name: "A3",
+                markerType: "none",
+                dataPoints:[
+                    { x:0 , y: 0 },
+                { x:15 , y: 0.039 },
+                { x:30 , y: 0.043 },
+                { x:45 , y: 0.045 },
+                { x:60 , y: 0.046 },
+                { x:75 , y: 0.048 },
+                { x:90 , y: 0.051 },
+                { x:105 , y: 0.054 },
+                { x:120 , y: 0.058 },
+                { x:135 , y: 0.063 },
+                { x:150 , y: 0.07 },
+                { x:165 , y: 0.079 },
+                { x:180 , y: 0.089 },
+                { x:195 , y: 0.102 },
+                { x:210 , y: 0.119 },
+                { x:225 , y: 0.138 },
+                { x:240 , y: 0.162 },
+                { x:255 , y: 0.18 },
+                { x:270 , y: 0.215 },
+                { x:285 , y: 0.262 },
+                { x:300 , y: 0.297 },
+                { x:315 , y: 0.316 },
+                { x:330 , y: 0.365 },
+                { x:345 , y: 0.412 },
+                { x:360 , y: 0.456 }
+                        ]
+        },
+            
+        {
+            type: "rangeArea",
+            markerType: "none",
+            lineThickness: 0,
+            showInLegend: true,
+            name: "Deviation" ,
+            fillOpacity : 0.5,
+            dataPoints: [
+            { x:0 , y: [0, 0] },
+            { x:15 , y: [0.039, 0.04] },
+            { x:30 , y: [0.043, 0.043] },
+            { x:45 , y: [0.045, 0.045] },
+            { x:60 , y: [0.046, 0.046] },
+            { x:75 , y: [0.048, 0.049] },
+            { x:90 , y: [0.051, 0.051] },
+            { x:105 , y: [0.054, 0.055] },
+            { x:120 , y: [0.058, 0.06] },
+            { x:135 , y: [0.063, 0.066] },
+            { x:150 , y: [0.07, 0.074] },
+            { x:165 , y: [0.079, 0.085] },
+            { x:180 , y: [0.089, 0.096] },
+            { x:195 , y: [0.102, 0.111] },
+            { x:210 , y: [0.119, 0.13] },
+            { x:225 , y: [0.138, 0.154] },
+            { x:240 , y: [0.162, 0.173] },
+            { x:255 , y: [0.18, 0.205] },
+            { x:270 , y: [0.215, 0.248] },
+            { x:285 , y: [0.262, 0.295] },
+            { x:300 , y: [0.297, 0.332] },
+            { x:315 , y: [0.316, 0.358] },
+            { x:330 , y: [0.365, 0.406] },
+            { x:345 , y: [0.412, 0.458] },
+            { x:360 , y: [0.456, 0.495] }
+            ]
+        }
+        ]  
+	});
+	chart.render();
+}
+</script>  
+    
+   
+</html>
